@@ -6,6 +6,7 @@
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { 
+    -webkit-text-size-adjust: 100%; /* 文字サイズの自動調整を無効にする */
     height: 100vh; 
     width: 100vw;
 }
@@ -91,10 +92,11 @@ body {
 </div>
 <script>
     var params = (new URL(document.location)).searchParams;
-    var latlng,zoom;
+    var latlng,zoom,area;
     if(params.get('latlng')) latlng = "latlng="+params.get('latlng');
     if(params.get('zoom')) zoom = "&zoom="+params.get('zoom');
-    var src="https://script.google.com/macros/s/AKfycbx5CRB-fVU7AVhW9as93iEkTnhxjkZ768ESZMa7z9x5ia1gTZCmJAE2M8zGyPzvLEWlEQ/exec"+"?"+latlng+zoom;
+    if(params.get('area')) area = "&area="+params.get('area');
+    var src="https://script.google.com/macros/s/AKfycbx5CRB-fVU7AVhW9as93iEkTnhxjkZ768ESZMa7z9x5ia1gTZCmJAE2M8zGyPzvLEWlEQ/exec"+"?"+latlng+zoom+area;
     const el = document.getElementById("embed");
     el.src=src;
 </script>
